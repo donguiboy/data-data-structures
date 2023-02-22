@@ -1,6 +1,5 @@
 # pylint: disable=missing-docstring
 
-# TODO: add some currency rates
 RATES = {
     "USDEUR": 0.85,
     "GBPEUR": 1.13,
@@ -18,12 +17,14 @@ def convert(amount, currency):
                     convert(100, "EURGBP")
                         100 * EURGBP => 88,5
     """
-   # values = amount[0]
-   # change = amount[1]+currency
-    #RATES.get(change, None)
     for key, value in RATES.items():
         if amount[1] == key[0:3] and currency == "EUR":
             return round(value * amount[0])
         if amount[1] == key[0:3] and currency == "GBP":
             return round(value * amount[0])
+        if amount[1] == key[0:3] and currency == "USD":
+            return round(value * amount[0])
+        if amount[1] == key[0:3] and currency == "CHF":
+            return round(value * amount[0])
+
     return None
